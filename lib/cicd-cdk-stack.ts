@@ -18,14 +18,15 @@ export class CicdCdkStack extends cdk.Stack {
       })
     });
 
-    const testingStage = pipeline.addStage(new MyPipelineAppStage(this, 'test', {
-      env: { account: "279506166399", region: 'us-east-1'}
+
+    const testingStage = pipeline.addStage(new MyPipelineAppStage(this, "test", {
+      env: { account: "279506166399", region: "us-east-1"}
     }));
 
     testingStage.addPost(new ManualApprovalStep('Manual approval before production'));
 
-    const prodStage = pipeline.addStage(new MyPipelineAppStage(this, 'prod', {
-      env: { account: "279506166399", region: 'us-east-1'}
+    const prodStage = pipeline.addStage(new MyPipelineAppStage(this, "prod", {
+      env: { account: "279506166399", region: "us-east-1"}
     }));
   }
 }
